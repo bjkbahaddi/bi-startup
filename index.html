@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bi-startup | منصة الشركات الناشئة الرائدة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #ec4899;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* ============ Navigation ============ */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .subscribe-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .subscribe-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        /* ============ Hero Section ============ */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1e293b 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #cbd5e1;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* ============ Categories Section ============ */
+        .categories {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .category-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ============ Startups Section ============ */
+        .startups-section {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .startups-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            background: var(--light-bg);
+            border: 2px solid var(--border-color);
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: var(--text-dark);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .startups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .startup-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+        }
+
+        .startup-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .startup-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .startup-logo {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .startup-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .startup-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .startup-body {
+            padding: 1.5rem;
+        }
+
+        .startup-description {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .startup-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .info-icon {
+            color: var(--primary-color);
+            font-weight: bold;
+            width: 20px;
+        }
+
+        .startup-footer {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-contact {
+            flex: 1;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.7rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-contact:hover {
+            background: var(--secondary-color);
+        }
+
+        .btn-visit {
+            flex: 1;
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 0.7rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-visit:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* ============ Pricing Section ============ */
+        .pricing-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1e293b 100%);
+            color: white;
+        }
+
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.2);
+            transform: scale(1.05);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--secondary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-period {
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .features-list {
+            text-align: right;
+            margin-bottom: 2rem;
+            list-style: none;
+        }
+
+        .features-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+        }
+
+        .features-list li:before {
+            content: "✓ ";
+            color: var(--success-color);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .pricing-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pricing-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        /* ============ Footer ============ */
+        footer {
+            background: var(--dark-bg);
+            color: #cbd5e1;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: right;
+        }
+
+        .footer-section h4 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+        }
+
+        /* ============ Modal ============ */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .modal h2 {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .modal-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        /* ============ Responsive ============ */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">BI</div>
+                <span>bi-startup</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#categories">الفئات</a></li>
+                <li><a href="#startups">الشركات</a></li>
+                <li><a href="#pricing">الأسعار</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+            <button class="subscribe-btn" onclick="openSubscribeModal()">اشترك الآن</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🚀 اكتشف أفضل الشركات الناشئة</h1>
+            <p>منصتك الموثوقة للتواصل مع أحدث الشركات الناشئة والمبتكرة في مختلف المجالات</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="document.getElementById('startups').scrollIntoView({behavior: 'smooth'})">استكشف الشركات</button>
+                <button class="btn-secondary" onclick="openSubscribeModal()">اشترك برسالة إخبارية</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <h2 class="section-title">🎯 المجالات الرئيسية</h2>
+        <div class="categories-grid">
+            <div class="category-card" onclick="filterByCategory('technology')">
+                <div class="category-icon">💻</div>
+                <h3>التكنولوجيا</h3>
+                <p>تطبيقات وحلول تقنية مبتكرة</p>
+            </div>
+            <div class="category-card" onclick="filterByCategory('fintech')">
+                <div class="category-icon">💰</div>
+                <h3>التكنولوجيا المالية</h3>
+                <p>حلول دفع وتحويل أموال</p>
+            </div>
+            <div class="category-card" onclick="filterByCategory('ecommerce')">
+                <div class="category-icon">🛍️</div>
+                <h3>التجارة الإلكترونية</h3>
+                <p>منصات بيع وتسوق إلكترونية</p>
+            </div>
+            <div class="category-card" onclick="filterByCategory('healthcare')">
+                <div class="category-icon">⚕️</div>
+                <h3>الصحة والعافية</h3>
+                <p>تطبيقات صحية وخدمات طبية</p>
+            </div>
+            <div class="category-card" onclick="filterByCategory('education')">
+                <div class="category-icon">📚</div>
+                <h3>التعليم</h3>
+                <p>منصات تعليمية وتدريبية</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Startups Section -->
+    <section class="startups-section" id="startups">
+        <div class="startups-container">
+            <h2 class="section-title">🌟 الشركات الناشئة المتاحة</h2>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterByCategory('all')">الكل</button>
+                <button class="filter-btn" onclick="filterByCategory('technology')">التكنولوجيا</button>
+                <button class="filter-btn" onclick="filterByCategory('fintech')">التكنولوجيا المالية</button>
+                <button class="filter-btn" onclick="filterByCategory('ecommerce')">التجارة الإلكترونية</button>
+                <button class="filter-btn" onclick="filterByCategory('healthcare')">الصحة</button>
+                <button class="filter-btn" onclick="filterByCategory('education')">التعليم</button>
+            </div>
+
+            <div class="startups-grid" id="startupsGrid">
+                <!-- Startups will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="pricing-container">
+            <h2 class="pricing-title">💳 باقات الاشتراك</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>مجاني</h3>
+                    <div class="price">$0</div>
+                    <div class="price-period">إلى الأبد</div>
+                    <ul class="features-list">
+                        <li>عرض الشركات الناشئة</li>
+                        <li>معلومات أساسية</li>
+                        <li>دعم محدود</li>
+                    </ul>
+                    <button class="pricing-btn">ابدأ الآن</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">الأكثر شهرة</div>
+                    <h3>احترافي</h3>
+                    <div class="price">$10</div>
+                    <div class="price-period">شهري</div>
+                    <ul class="features-list">
+                        <li>جميع ميزات المجاني</li>
+                        <li>معلومات تفصيلية كاملة</li>
+                        <li>بيانات الاتصال المباشرة</li>
+                        <li>أولوية في البحث</li>
+                        <li>دعم أولويات</li>
+                        <li>تقارير شهرية</li>
+                    </ul>
+                    <button class="pricing-btn" onclick="openSubscribeModal()">اشترك الآن</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>مؤسسي</h3>
+                    <div class="price">$50</div>
+                    <div class="price-period">شهري</div>
+                    <ul class="features-list">
+                        <li>جميع ميزات الاحترافي</li>
+                        <li>إدارة حساب مخصص</li>
+                        <li>تحليلات متقدمة</li>
+                        <li>API للتكامل</li>
+                        <li>دعم 24/7</li>
+                    </ul>
+                    <button class="pricing-btn">تواصل معنا</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>عن bi-startup</h4>
+                <p>منصة متخصصة في عرض وتوصيل الشركات الناشئة الرائدة مع المستثمرين والعملاء المحتملين.</p>
+            </div>
+            <div class="footer-section">
+                <h4>الروابط السريعة</h4>
+                <ul>
+                    <li><a href="#categories">الفئات</a></li>
+                    <li><a href="#startups">الشركات</a></li>
+                    <li><a href="#pricing">الأسعار</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>تواصل معنا</h4>
+                <ul>
+                    <li>البريد: info@bi-startup.com</li>
+                    <li>الهاتف: +966 50 123 4567</li>
+                    <li>العنوان: الرياض، المملكة العربية السعودية</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 bi-startup. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Subscribe Modal -->
+    <div class="modal" id="subscribeModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeSubscribeModal()">✕</button>
+            <h2>اشترك في الباقة الاحترافية</h2>
+            <form onsubmit="handleSubscribe(event)">
+                <div class="form-group">
+                    <label for="name">الاسم الكامل</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">اسم الشركة / المؤسسة</label>
+                    <input type="text" id="company" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">رسالة إضافية (اختياري)</label>
+                    <textarea id="message"></textarea>
+                </div>
+                <button type="submit" class="modal-btn">تأكيد الاشتراك - $10/شهر</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeContactModal()">✕</button>
+            <h2 id="contactTitle">تواصل مع الشركة</h2>
+            <div id="contactInfo"></div>
+            <form onsubmit="handleContact(event)">
+                <div class="form-group">
+                    <label for="contactName">اسمك</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">بريدك الإلكتروني</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">رسالتك</label>
+                    <textarea id="contactMessage" required></textarea>
+                </div>
+                <button type="submit" class="modal-btn">إرسال الرسالة</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Sample Startups Data
+        const startupsData = [
+            {
+                id: 1,
+                name: "TechVision",
+                category: "technology",
+                description: "منصة ذكية لتحليل البيانات باستخدام الذكاء الاصطناعي",
+                logo: "📊",
+                email: "contact@techvision.com",
+                phone: "+966 50 111 1111",
+                website: "www.techvision.com",
+                founded: "2023"
+            },
+            {
+                id: 2,
+                name: "PayFlow",
+                category: "fintech",
+                description: "تطبيق محفظة رقمية آمنة وسهلة الاستخدام",
+                logo: "💳",
+                email: "support@payflow.com",
+                phone: "+966 50 222 2222",
+                website: "www.payflow.com",
+                founded: "2022"
+            },
+            {
+                id: 3,
+                name: "ShopHub",
+                category: "ecommerce",
+                description: "منصة تجارة إلكترونية متكاملة للعاملين بالتجزئة",
+                logo: "🛒",
+                email: "info@shophub.com",
+                phone: "+966 50 333 3333",
+                website: "www.shophub.com",
+                founded: "2023"
+            },
+            {
+                id: 4,
+                name: "HealthPlus",
+                category: "healthcare",
+                description: "تطبيق استشارات طبية أونلاين مع أطباء متخصصين",
+                logo: "🏥",
+                email: "hello@healthplus.com",
+                phone: "+966 50 444 4444",
+                website: "www.healthplus.com",
+                founded: "2022"
+            },
+            {
+                id: 5,
+                name: "LearnHub",
+                category: "education",
+                description: "منصة تعليمية تفاعلية للدورات المتخصصة",
+                logo: "🎓",
+                email: "contact@learnhub.com",
+                phone: "+966 50 555 5555",
+                website: "www.learnhub.com",
+                founded: "2023"
+            },
+            {
+                id: 6,
+                name: "CloudSync",
+                category: "technology",
+                description: "خدمة تخزين سحابي آمنة مع مزامنة فورية",
+                logo: "☁️",
+                email: "support@cloudsync.com",
+                phone: "+966 50 666 6666",
+                website: "www.cloudsync.com",
+                founded: "2021"
+            },
+            {
+                id: 7,
+                name: "MoneyMate",
+                category: "fintech",
+                description: "تطبيق إدارة الميزانية الشخصية والاستثمارات",
+                logo: "💰",
+                email: "info@moneymate.com",
+                phone: "+966 50 777 7777",
+                website: "www.moneymate.com",
+                founded: "2023"
+            },
+            {
+                id: 8,
+                name: "FreshMart",
+                category: "ecommerce",
+                description: "تطبيق توصيل المنتجات الطازة من المزارع مباشرة",
+                logo: "🥬",
+                email: "hello@freshmart.com",
+                phone: "+966 50 888 8888",
+                website: "www.freshmart.com",
+                founded: "2022"
+            },
+            {
+                id: 9,
+                name: "FitLife",
+                category: "healthcare",
+                description: "تطبيق لياقة بدنية مع برامج تدريب شخصية",
+                logo: "💪",
+                email: "contact@fitlife.com",
+                phone: "+966 50 999 9999",
+                website: "www.fitlife.com",
+                founded: "2023"
+            },
+            {
+                id: 10,
+                name: "CodeAcademy",
+                category: "education",
+                description: "منصة تعليم البرمجة والتطوير الويب",
+                logo: "💻",
+                email: "support@codeacademy.com",
+                phone: "+966 50 101 0101",
+                website: "www.codeacademy.com",
+                founded: "2021"
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            displayStartups('all');
+        });
+
+        // Display Startups
+        function displayStartups(category) {
+            const grid = document.getElementById('startupsGrid');
+            grid.innerHTML = '';
+
+            const filtered = category === 'all' 
+                ? startupsData 
+                : startupsData.filter(s => s.category === category);
+
+            filtered.forEach(startup => {
+                const card = document.createElement('div');
+                card.className = 'startup-card';
+                card.innerHTML = `
+                    <div class="startup-header">
+                        <div class="startup-logo">${startup.logo}</div>
+                        <h3>${startup.name}</h3>
+                        <div class="startup-category">${getCategoryName(startup.category)}</div>
+                    </div>
+                    <div class="startup-body">
+                        <p class="startup-description">${startup.description}</p>
+                        <div class="startup-info">
+                            <div class="info-item">
+                                <span class="info-icon">📧</span>
+                                <span>${startup.email}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">📱</span>
+                                <span>${startup.phone}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">🌐</span>
+                                <span>${startup.website}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">📅</span>
+                                <span>تأسيس: ${startup.founded}</span>
+                            </div>
+                        </div>
+                        <div class="startup-footer">
+                            <button class="btn-contact" onclick="openContactModal('${startup.name}', '${startup.email}', '${startup.phone}')">تواصل معهم</button>
+                            <button class="btn-visit" onclick="window.open('https://${startup.website}', '_blank')">زيارة الموقع</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter by Category
+        function filterByCategory(category) {
+            currentFilter = category;
+            displayStartups(category);
+            
+            // Update filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Get Category Name
+        function getCategoryName(category) {
+            const names = {
+                technology: 'التكنولوجيا',
+                fintech: 'التكنولوجيا المالية',
+                ecommerce: 'التجارة الإلكترونية',
+                healthcare: 'الصحة والعافية',
+                education: 'التعليم'
+            };
+            return names[category] || category;
+        }
+
+        // Subscribe Modal
+        function openSubscribeModal() {
+            document.getElementById('subscribeModal').classList.add('active');
+        }
+
+        function closeSubscribeModal() {
+            document.getElementById('subscribeModal').classList.remove('active');
+        }
+
+        function handleSubscribe(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            alert(`شكراً ${name}! تم استقبال طلب الاشتراك. سنتواصل معك على ${email} قريباً.`);
+            closeSubscribeModal();
+            document.querySelector('form').reset();
+        }
+
+        // Contact Modal
+        function openContactModal(name, email, phone) {
+            document.getElementById('contactTitle').textContent = `تواصل مع ${name}`;
+            document.getElementById('contactInfo').innerHTML = `
+                <div style="background: #f0f4f8; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; text-align: right;">
+                    <p><strong>البريد:</strong> ${email}</p>
+                    <p><strong>الهاتف:</strong> ${phone}</p>
+                </div>
+            `;
+            document.getElementById('contactModal').classList.add('active');
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
+        }
+
+        function handleContact(e) {
+            e.preventDefault();
+            const name = document.getElementById('contactName').value;
+            alert(`شكراً ${name}! تم إرسال رسالتك بنجاح. ستتلقى ردهم قريباً.`);
+            closeContactModal();
+            document.querySelector('#contactModal form').reset();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const subscribeModal = document.getElementById('subscribeModal');
+            const contactModal = document.getElementById('contactModal');
+            
+            if (event.target === subscribeModal) {
+                subscribeModal.classList.remove('active');
+            }
+            if (event.target === contactModal) {
+                contactModal.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
