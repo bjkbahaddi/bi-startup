@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>لوحة التحكم | bi-startup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Cairo', sans-serif; background: #f4f7fe; padding: 2rem; }
+        .admin-container { max-width: 800px; margin: 0 auto; background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 1rem; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-top: 5px; }
+        .btn-add { background: #6366f1; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; width: 100%; font-weight: bold; }
+        .startup-list { margin-top: 2rem; border-top: 2px solid #eee; padding-top: 1rem; }
+        .item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee; }
+        .btn-del { background: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="admin-container">
+    <h2><i class="fas fa-user-shield"></i> إدارة الشركات</h2>
+    <p>أضف شركات جديدة لتظهر في الموقع الرئيسي</p>
+    
+    <div class="form-group">
+        <label>اسم الشركة</label>
+        <input type="text" id="name" placeholder="مثال: تيك نوفا">
+    </div>
+    <div class="form-group">
+        <label>الفئة</label>
+        <select id="category">
+            <option value="technology">تكنولوجيا</option>
+            <option value="fintech">مالية</option>
+            <option value="healthcare">صحة</option>
+            <option value="ecommerce">تجارة</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>الوصف</label>
+        <textarea id="desc" placeholder="وصف مختصر..."></textarea>
+    </div>
+    <div class="form-group">
+        <label>الأيقونة (FontAwesome)</label>
+        <input type="text" id="icon" placeholder="مثال: fa-rocket">
+    </div>
+    <button class="btn-add" onclick="addStartup()">إضافة الشركة الآن</button>
+
+    <div class="startup-list" id="adminList">
+        </div>
+    <br>
+    <a href="index.html">العودة للموقع الرئيسي</a>
+</div>
+
+<script>
+    // جلب البيانات أو تعيين مصفوفة فارغة
+    let startups = JSON.parse(localStorage.getItem('myStartups')) || [];
+
+    function renderAdminList() {
+        const list = document.getElementById('adminList');
+        list.innerHTML = '<h3>الشركات المضافة:</h3>';
+        startups.forEach((s, index) => {
+            list.innerHTML += `
+                <div class="item">
+                    <span><strong>${s.name}</strong> (${s.category})</span>
+                    <button class="btn-del" onclick="deleteStartup(${index})">حذف</button>
+                </div>
+            `;
+        });
+    }
+
+    function addStartup() {
+        const name = document.getElementById('name').value;
+        const category = document.getElementById('category').value;
+        const desc = document.getElementById('desc').value;
+        const icon = document.getElementById('icon').value || 'fa-briefcase';
+
+        if(name && desc) {
+            startups.push({ name, category, desc, icon });
+            localStorage.setItem('myStartups', JSON.stringify(startups));
+            alert('تمت الإضافة بنجاح!');
+            renderAdminList();
+            // مسح الحقول
+            document.getElementById('name').value = '';
+            document.getElementById('desc').value = '';
+        } else {
+            alert('يرجى ملء البيانات الأساسية');
+        }
+    }
+
+    function deleteStartup(index) {
+        if(confirm('هل أنت متأكد من الحذف؟')) {
+            startups.splice(index, 1);
+            localStorage.setItem('myStartups', JSON.stringify(startups));
+            renderAdminList();
+        }
+    }
+
+    renderAdminList();
+</script>
+</body>
+</html>
